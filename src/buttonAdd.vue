@@ -9,6 +9,7 @@
     </div>
     <transition name="modal">
       <div class="modal-mask" v-if="kondisi">
+        <loading :active.sync="isLoading" :is-full-page="fullPage"></loading>
         <div
           class="h-screen bg-transparent fixed w-full flex items-center justify-center z-50 border-gray-200 modal-container"
         >
@@ -70,20 +71,29 @@
 
 <script>
 import axios from "axios";
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
+
 export default {
   data() {
     return {
       kondisi: false,
       name: "",
       description: "",
-      music: ""
+      music: "",
+      isLoading: false,
+      fullPage: true
     };
+  },
+  components: {
+    Loading
   },
   methods: {
     showModal(kondisi) {
       this.kondisi = kondisi;
     },
     addPost() {
+      this.isLoading = true;
       let { name, description, music } = this;
       var bodyFormData = new FormData();
       console.log(music[0], music, ".,.,.,.,.,.,.<<<<");
@@ -93,11 +103,15 @@ export default {
       console.log(bodyFormData, " check");
       axios({
         method: "POST",
-        url: "https://34.87.64.243/post",
+        url: "http://35.234.104.53/post",
         data: bodyFormData
       })
         .then(({ data }) => {
-          this.kondisi = false;
+          this.isLoading = false
+          this.kondisi = false
+          this.name = ''
+          this.description = ''
+          this.music = ''
           this.$emit("apa", data);
           console.log(data, " ,,,,,,,,,,,,,,,,,,,,,,");
         })
