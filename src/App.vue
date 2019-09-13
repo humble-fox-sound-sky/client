@@ -38,7 +38,7 @@ export default {
   methods: {
     fetchData() {
       axios
-        .get("https://34.87.64.243/post")
+        .get("http://35.234.104.53/post")
         .then(({ data }) => {
           console.log(data.data[0]);
           this.songs = data.data;

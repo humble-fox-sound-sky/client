@@ -93,7 +93,7 @@ export default {
       console.log(bodyFormData, " check");
       axios({
         method: "POST",
-        url: "https://34.87.64.243/post",
+        url: "http://35.234.104.53/post",
         data: bodyFormData
       })
         .then(({ data }) => {
