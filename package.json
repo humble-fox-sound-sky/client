@@ -4,6 +4,8 @@
   "description": "Client Side using Vue.js",
   "main": "index.js",
   "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,6 +27,7 @@
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^3.0.0",
+    "cssnano": "^4.1.10",
     "vue-template-compiler": "^2.6.10"
   }
 }
